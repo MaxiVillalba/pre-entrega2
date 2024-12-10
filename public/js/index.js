@@ -45,3 +45,24 @@ socket.on("messageLogs", (data) => {
 
   messagesLogs.innerHTML= messages;
 })
+
+socket.on("newUser", (data) => {
+  Swal.fire({
+    text:`se conecto ${data}`,
+    toast: true,
+    position: "top-right",
+    timer: 2000,
+  });
+
+
+    })
+
+
+socket.on("user-disconnect", (data) => {
+    swal.fire({
+      text: `${data} se desconectó`,
+      toast: true,
+      position: "top-right",
+      timer: 2000,
+      showConfirmButton: false,  })
+});
