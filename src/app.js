@@ -35,14 +35,19 @@ const saveMessages = async (messages) => {
   console.error('Error al intentar guardar los mensajes', error);
 }};
 
-// Cargar mensajes previos
+// Cargar mensajes previos y generar messages.json
 
 const loadMessageFromFile = async () => {
   try {
     const data = await fs.promises.readFile('./messages.json', 'utf-8');
     messages = JSON.parse(data); 
-  } catch (error) {
-    console.error('Error al intentar cargar los mensajes previos:', error);
+  } catch (error) { 
+    if (error.code === 'ENOENT') {
+      console.log('No se encontró messages.json, se crea uno nuevo.');
+      messages = [];
+      await fs.promises.writeFile('./messages.json', JSON.stringify(messages, null, 2));
+    } else {
+    console.error('Error al intentar cargar los mensajes previos:', error);}
   }
 };
 
