@@ -1,9 +1,17 @@
 <div class="container mt-5">
-    <h1>Chat</h1>
-<div> <input type="text" name="" id="chatBox"> </div>
+  <h1 class="text-center">Chat</h1>
+  <div class="chat-box border rounded p-3 bg-light">
+    <div id="messageLogs" class="message-logs overflow-auto" style="height: 300px;"></div>
+    <div class="mt-3">
+      <input
+        type="text"
+        id="chatBox"
+        class="form-control"
+        placeholder="Escribe tu mensaje"
+      />
+    </div>
+  </div>
 </div>
-<p id="messageLogs"></p>
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/index.js"></script>

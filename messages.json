@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "user": "Maxi",
+    "message": "maxi"
+  },
+  {
+    "user": "Maxi",
+    "message": "Hola!"
+  },
+  {
+    "user": "Jorja",
+    "message": "Probando"
+  },
+  {
+    "user": "Lo",
+    "message": "probando"
+  },
+  {
+    "user": "maxi",
+    "message": "Hey"
+  },
+  {
+    "user": "Max",
+    "message": "Hola"
+  },
+  {
+    "user": "Maxi",
+    "message": "Hola"
+  },
+  {
+    "user": "Kennen",
+    "message": "hola"
+  },
+  {
+    "user": "Maxi",
+    "message": "que onda"
+  },
+  {
+    "user": "Maxi",
+    "message": "Hola"
+  },
+  {
+    "user": "María",
+    "message": "Probando"
+  },
+  {
+    "user": "Maxi",
+    "message": "Perfecto"
+  },
+  {
+    "user": "María",
+    "message": "Faltaría mejorar el css para que tenga un aspecto más agradable"
+  },
+  {
+    "user": "Marta",
+    "message": "Hola"
+  },
+  {
+    "user": "Lucas",
+    "message": "Hola"
+  }
+]
