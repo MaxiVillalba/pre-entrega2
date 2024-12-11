@@ -1,6 +1,7 @@
 import express from "express";
 import handlebars from "express-handlebars";
 import { Server } from "socket.io";
+import fs from "fs";
 
 const app = express();
 // Para que nuestro servidor express pueda interpretar en forma automática mensajes de tipo JSON
@@ -25,6 +26,28 @@ const httpServer = app.listen(PORT, () => {
 
 let messages = [];
 
+// Configuración para guardar mensajes
+
+const saveMessages = async (messages) => {
+  try {
+  await fs.promises.writeFile('./messages.json', JSON.stringify(messages, null, 2));
+} catch (error) {
+  console.error('Error al intentar guardar los mensajes', error);
+}};
+
+// Cargar mensajes previos
+
+const loadMessageFromFile = async () => {
+  try {
+    const data = await fs.promises.readFile('./messages.json', 'utf-8');
+    messages = JSON.parse(data); 
+  } catch (error) {
+    console.error('Error al intentar cargar los mensajes previos:', error);
+  }
+};
+
+loadMessageFromFile();
+
 // Configuración de socket 
 
 const io = new Server(httpServer);
@@ -35,11 +58,13 @@ io.on("connection", (socket) => {
     socket.on("newUser", (data) => {
       socket.userName = data;
       socket.broadcast.emit("newUser", data);
+      saveMessages(messages);
     });
 
     socket.on("message", (data) => {
       messages.push(data);
       io.emit("messageLogs", messages);
+      saveMessages(messages);
     });
 
     socket.on("disconnect", () => {
